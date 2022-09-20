@@ -1,0 +1,117 @@
+﻿<Window x:Class="OpenSaveDialog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenSaveDialog"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+
+        <DockPanel Grid.Row="0"
+                   Background="Aqua">
+            <Button x:Name="CloseBtn"
+                    DockPanel.Dock="Right"
+                    Width="75"
+                    Height="45"
+                    Content="Close"
+                    Margin="0,0,5,0"
+                    Click="CloseBtn_Click" />
+
+            <Button x:Name="OpenBtn"
+                    DockPanel.Dock="Left"
+                    Width="75"
+                    Height="45"
+                    Content="OpenFile"
+                    Margin="5,0,5,0"
+                    Click="OpenBtn_Click" />
+
+            <Button x:Name="SaveBtn"
+                    DockPanel.Dock="Left"
+                    Width="75"
+                    Height="45"
+                    Content="SaveFile"
+                    Margin="0,0,0,0"
+                    />
+            <DockPanel />
+        </DockPanel>
+        <DockPanel Grid.Row="1"
+                   Background="LightGoldenrodYellow">
+            <Label DockPanel.Dock="Left"
+                   Content="Vyhledat:" />
+            <TextBox DockPanel.Dock="Left"
+                     x:Name="Vyhledat"
+                     Width="100"
+                     Height="20"
+                     TextChanged="Vyhledat_TextChanged" />
+            
+            <Label DockPanel.Dock="Right"
+                   x:Name="Pocet"
+                   Margin="0,0,10,0"/>
+            <Label DockPanel.Dock="Right"
+                   Content="Počet hráčů:"
+                   Margin="0,0,10,0" />
+
+            <DockPanel />
+
+        </DockPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      x:Name="VypisLV"
+                      HorizontalContentAlignment="Stretch"
+                      VerticalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Foreground="Black"
+                                       Text="{Binding Name}"
+                                       ToolTip="{Binding}"
+                                       Margin="0,0,10,0" />
+                            <TextBlock Grid.Column="1"
+                                       Foreground="Black"
+                                       Text="{Binding Team}"
+                                       ToolTip="{Binding}"
+                                       Margin="0,0,10,0" />
+                            <TextBlock Grid.Column="2"
+                                       Foreground="Black"
+                                       Text="{Binding SC}"
+                                       ToolTip="{Binding}"
+                                       Margin="0,0,10,0" />
+                            <TextBlock Grid.Column="3"
+                                       Foreground="Black"
+                                       Text="{Binding Pos}"
+                                       ToolTip="{Binding}"
+                                       Margin="0,0,10,0" />
+                            <TextBlock Grid.Column="4"
+                                       Foreground="Black"
+                                       Text="{Binding GP}"
+                                       ToolTip="{Binding}"
+                                       Margin="0,0,10,0" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
